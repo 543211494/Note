@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--  集合类型注入  -->
+    <bean id="demo1" class="org.study.spring.bean.Demo">
+        <!--    数组类型注入    -->
+        <property name="array">
+            <array>
+                <!--
+                     若要注入对象，格式如下:
+                     <ref bean=“id”></ref>
+                 -->
+                <value>abc</value>
+                <value>123</value>
+                <value>efg</value>
+            </array>
+        </property>
+        <!--   list类型注入    -->
+        <property name="list">
+            <list>
+                <value>awf</value>
+                <value>jzn</value>
+                <value>135</value>
+            </list>
+        </property>
+        <!--   map类型注入     -->
+        <property name="map">
+            <map>
+                <!--
+                    若要注入对象，格式如下:
+                    <entry key-ref="id" value-ref="id"></entry>
+                -->
+                <entry key="a" value="12"></entry>
+                <entry key="b" value="34"></entry>
+                <entry key="c" value="56"></entry>
+            </map>
+        </property>
+        <!--   set类型注入     -->
+        <property name="set">
+            <set>
+                <value>123</value>
+                <value>456</value>
+                <value>abc</value>
+            </set>
+        </property>
+    </bean>
+</beans>

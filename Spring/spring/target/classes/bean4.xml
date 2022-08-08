@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="book1" class="org.study.spring.bean.Book" autowire="byName">
+        <!--   普通属性     -->
+        <property name="IBSN" value="001"></property>
+        <property name="price" value="18.8"></property>
+        <!--
+            byName方法注入要求注入bean的id与被注入的变量名相同
+        -->
+    </bean>
+    <bean id="book2" class="org.study.spring.bean.Book" autowire="byType">
+        <!--   普通属性     -->
+        <property name="IBSN" value="001"></property>
+        <property name="price" value="18.8"></property>
+        <!--
+            byType方法注入要求注入bean类型的实例只有一个，否则会保存
+        -->
+    </bean>
+    <bean id="author" class="org.study.spring.bean.User">
+        <property name="age" value="20"></property>
+        <property name="id" value="001"></property>
+        <property name="name" value="user001"></property>
+    </bean>
+</beans>
