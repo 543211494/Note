@@ -114,6 +114,19 @@ nginx -s stop
 nginx -s reload
 ```
 
+解决session失效问题
+
+```
+location /api/ {
+	proxy_pass http://127.0.0.1:8080/demo/;
+	proxy_cookie_path /demo /api;
+}
+#语法
+#proxy_cookie_path path replacement
+```
+
+cookie的path与地址栏的path不一致就会被浏览器丢弃造成session验证失效，加上这个配置在转发的时候会把path替换，path为要替换的路径，replacement为要替换的值
+
 # 3.nginx配置文件
 
 ## 3.1基本概念
