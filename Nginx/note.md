@@ -97,6 +97,23 @@ cd sbin
 ./ngnix -s reload
 ```
 
+## 2.4windows下安装
+
+下载地址<a herf="http://nginx.org/download/">http://nginx.org/download/</a>
+
+可解决跨域问题方便调试程序
+
+进入解压后文件夹根目录，打开cmd
+
+```shell
+#启动nginx
+start nginx
+#停止nginx
+nginx -s stop
+#重启服务
+nginx -s reload
+```
+
 # 3.nginx配置文件
 
 ## 3.1基本概念
@@ -169,7 +186,9 @@ http {
         #access_log  logs/host.access.log  main;
 
         location / {
+        	#根目录，可以放静态资源文件
             root   html;
+            #默认展示的文件
             index  index.html index.htm;
         }
 
@@ -262,8 +281,6 @@ http {
         location / {
         	#所有匹配到的请求都会被转发给http://127.0.0.1:8080/
         	proxy_pass http://127.0.0.1:8080/;
-            root   html;
-            index  index.html index.htm;
         }
         error_page   500 502 503 504  /50x.html;
         location = /50x.html {
@@ -331,5 +348,4 @@ upstream myserver {
 
 (4)fair
 
-按后端服务器的响应时间分配
-
+按后端服务器的响应时间分配,需要第三方插件
