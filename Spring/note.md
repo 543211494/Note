@@ -946,3 +946,33 @@ spring-mvc.xml
 </beans>
 ```
 
+# 6.jdk生成自签证书
+
+命令：keytool -genkey -alias testhttps -keyalg RSA -keysize 2048 -validity 36500 -keystore  "D:/tmp/ssl/testhttps.keystore"
+
+命令解释:
+• -genkey 表示要创建一个新的密钥。 
+
+• -alias 表示 keystore 的别名。 
+
+• -keyalg 表示使用的加密算法是 RSA。
+
+• -keysize 表示密钥的长度。
+
+• -keystore 表示生成的密钥存放位直。 
+
+• -validity 表示密钥的有效时间，单位为天。
+
+```properties
+server:
+  servlet:
+    context-path: /test
+  ssl:
+    key-store: classpath:testhttps.keystore
+    key-password: abcdefg
+    key-store-password: abcdefg
+    key-store-type: JKS
+    key-alias: testhttps
+    enabled: true
+```
+
