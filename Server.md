@@ -60,6 +60,9 @@ use mysql
 update user set host = '%' where user = 'root'
 #刷新生效
 FLUSH PRIVILEGES
+#apt安装mysql
+sudo apt install mysql-server
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by '123456';
 ```
 
 ## 4.安装nodejs
@@ -186,3 +189,49 @@ make
 #安装
 make install
 ```
+
+## 7.安装Go
+
+```shell
+#解压文件
+tar zxvf go1.19.3.linux-amd64.tar.gz
+#设置 env
+go env -w GO111MODULE=on
+#使用七牛云的
+go env -w GOPROXY=https://goproxy.cn,direct
+#设置环境变量
+export GOROOT=/home/lzy/Downloads/go
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/home/lzy/Documents/GoProjects/GOPATH
+#更新环境变量
+source /etc/profile
+```
+
+## 8.安装maven
+
+```sh
+#解压文件
+tar zxvf apache-maven-3.8.6-bin.tar.gz
+#设置环境变量
+export M2_HOME=/home/lzy/Downloads/maven
+export PATH=$M2_HOME/bin:$PATH
+#更新环境变量
+source /etc/profile
+```
+
+设置setting.xml
+
+```xml
+<--! 换源 -->
+<mirrors>
+    <mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+      <mirrorOf>central</mirrorOf>        
+    </mirror>
+</mirrors>
+<--! 更改仓库路径 -->
+<localRepository>/home/gzx/Documents/localRepository</localRepository>
+```
+
